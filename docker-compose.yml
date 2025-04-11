@@ -3,16 +3,14 @@ services:
     build: ./public
     ports:
       - 3000:3000
-    environment:
-      - REACT_APP_API_HOST=ip172-18-0-57-cvrh250l2o90009icbjg-5000.direct.labs.play-with-docker.com
     depends_on:
       - backend
   backend:
     build: ./server
-    ports:
-      - 5000:5000
+    expose:
+      - 3000
     environment:
-      - PORT=5000
+      - PORT=3000
       - MONGO_URL=mongodb://db:27017/chat
     depends_on:
       - db
