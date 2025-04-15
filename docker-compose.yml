@@ -3,14 +3,19 @@ services:
     build: ./public
     ports:
       - 3000:3000
+    environment:
+      - REACT_APP_LOCALHOST_KEY=chat-app-current-user
+      - BACKEND_HOST=http://localhost:5000 
     depends_on:
       - backend
   backend:
     build: ./server
     expose:
-      - 3000
+      - 5000
+    ports:
+      - 5000:5000
     environment:
-      - PORT=3000
+      - PORT=5000
       - MONGO_URL=mongodb://db:27017/chat
     depends_on:
       - db
@@ -18,6 +23,8 @@ services:
     image: mongo:7.0
     expose:
       - 27017
+    ports:
+      - 27017:27017    
     volumes:
       - dbdata:/data/db
 volumes:
