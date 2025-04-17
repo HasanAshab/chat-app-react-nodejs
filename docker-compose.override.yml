@@ -3,6 +3,9 @@ services:
     build:
       context: ./public
       dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+
     volumes:
       - ./public:/app
       - /app/node_modules
