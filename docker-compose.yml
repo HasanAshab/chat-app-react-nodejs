@@ -1,6 +1,8 @@
 services:
   frontend:
-    build: ./public
+    build:
+      context: ./public
+      dockerfile: Dockerfile.prod
     ports:
       - 3000:3000
     environment:

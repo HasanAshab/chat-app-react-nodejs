@@ -1,0 +1,13 @@
+services:
+  frontend:
+    build:
+      context: ./public
+      dockerfile: Dockerfile
+    volumes:
+      - ./public:/app
+      - /app/node_modules
+    command: ["npm", "start"]
+  backend:
+    volumes:
+      - ./server:/app
+      - /app/node_modules
